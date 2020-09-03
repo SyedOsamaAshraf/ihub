@@ -1,0 +1,241 @@
+
+<html lang="en">
+  <head>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='officialcss.css') }}">
+<script type="text/javascript">
+
+</script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="officialcss.css">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+
+
+
+
+<div class="row" id="navrow">
+ <ul id="nav" > 
+  <a href="{{ url_for('profile') }}" style="text-decoration: none;
+  color: inherit; "><li>Profile</li></a>
+  <a href="{{ url_for('master') }}" style="text-decoration: none;
+  color: inherit; "><li>Master</li></a>
+  <li>Container</li>
+  <a href="{{ url_for('logout') }}" style="text-decoration: none;
+  color: inherit; "><li style="margin-left: 800px">Logout</li></a>
+  
+</ul>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="row">
+<div id="ok"></div>
+        <div class="col-sm-2">
+        <ul class="navbar">
+          <center>
+        <a href="#" style="   text-decoration: none;
+  color: inherit; ">  <li class="sidemenu" onclick="activelink('master')" id="master">Master Data</li><hr/>
+        <a href="#" style="   text-decoration: none;
+  color: inherit; ">  <li class="sidemenu" onclick="activelink('project')" id="project">Project</li><hr/></a>
+        <a href="#" style="   text-decoration: none;
+  color: inherit; ">  <li class="sidemenu" onclick="activelink('attendance')" id="attendance">Attendance</li><hr/></a>
+          <a href="#" style="   text-decoration: none;
+  color: inherit; ">  <li class="sidemenu" onclick="activelink('leave')" id="leave">Leave</li><hr/></a>
+   <a href="#" style="   text-decoration: none;
+  color: inherit; ">  <li class="sidemenu" onclick="activelink('file')" id="file">File Upload</li><hr/></a>
+        
+          </center>
+        </ul>
+        </div>
+        <div class="col-sm-10 name" id="whole">
+  
+
+        <div class="row" id="anyoption" style="height: 42px; margin-left: 20px;"></div>
+
+          <div class="row main" style="/*border: solid;*/background-color: white;">
+          <div class="col-sm-6"><ul><h5>
+            <div id="type">
+             <br>{% for i in data["Master Data"]%}
+                          <li>{{i}}</li><hr>{% endfor %}
+          </div></h5></ul>
+
+          </div>
+          
+          <div class="col-sm-6"><ul><i>
+          <div id="detail">
+              <br>{% for i,j in data["Master Data"].items()%}
+                          <li>{{j}}</li><hr>{% endfor %}
+          </div></i></ul>
+          </div>
+        </div>
+        </div>
+        
+
+        </div>
+
+      
+
+    </div>
+        
+        
+
+  
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+  <script type="text/javascript">
+    
+document.getElementById('master').addEventListener('click',function(){
+  document.getElementById('anyoption').innerHTML="";
+    document.getElementById('type').innerHTML=`<br>{% for i in data["Master Data"]%}
+                          <li>{{i}}</li><hr>{% endfor %}`;
+    document.getElementById('detail').innerHTML=`<br>{% for i,j in data["Master Data"].items()%}
+                          <li>{{j}}</li><hr>{% endfor %}`;
+});
+
+
+
+document.getElementById('project').addEventListener('click',function(){
+  
+      document.getElementById('type').innerHTML="";
+    document.getElementById('detail').innerHTML="";
+    document.getElementById('anyoption').innerHTML=`<br><table>{% for j in data["Project"]%}
+                          <td>{{j}}</td>{% endfor %}`;
+
+});
+
+
+document.getElementById('attendance').addEventListener('click',function(){
+  
+      document.getElementById('type').innerHTML=`
+                                                    <br>
+
+                                                   <button onclick="location.href='{{ url_for('checkin') }}'" class="btn btn-primary">Check In</button>
+                                                    
+                                                    `;;
+    document.getElementById('detail').innerHTML=`
+                                                    <br>
+                                                  
+                                                  <button onclick="location.href='{{ url_for('checkout') }}'" class="btn btn-primary">Check Out</button>
+
+
+                                                    `;;
+    document.getElementById('anyoption').innerHTML="";
+
+});
+
+
+document.getElementById('file').addEventListener('click',function(){
+  
+      document.getElementById('type').innerHTML=`
+                                                    <form action="{{ url_for('upload') }}" method="post"  enctype="multipart/form-data">
+
+                      <p>Secondary School/10th: </p>
+                      <input type="file" name="tenth" class="btn btn-primary" >
+                      <br>
+                      <br>
+
+                      <p>PreUniversity/12th: </p>
+                      <input type="file" name="twelveth" class="btn btn-primary">
+                      <br>
+                      <br>
+                      <p>Under Graduation: </p>
+                      <input type="file" name="ug" class="btn btn-primary" >
+                      <br>
+                      <br>
+                      <p>Post Graduation: </p>
+                      <input type="file" name="pg" class="btn btn-primary">
+                      <br>
+                      <br>
+                      <p>Mphil/PHD: </p>
+                      <input type="file" name="phd" class="btn btn-primary" >
+                      <br>
+
+                      <br>
+                      <br>
+                      <br>
+                      <button type="submit" class="btn btn-success">Upload</button>
+
+            </form>
+                                                    
+                                                    `;;
+    document.getElementById('detail').innerHTML="<br><br><br><br><br><br><br><br><br><br><h1>Please Check the files before uploading.</h1>";;
+
+    document.getElementById('anyoption').innerHTML="";
+
+});
+
+
+
+function activelink(data){
+
+document.getElementById('master').style.backgroundColor="";
+document.getElementById('project').style.backgroundColor="";
+document.getElementById('leave').style.backgroundColor="";
+document.getElementById('attendance').style.backgroundColor="";
+document.getElementById('file').style.backgroundColor="";
+
+
+
+document.getElementById(data).style.backgroundColor="yellow";
+
+
+}
+
+
+
+
+
+  </script>
+</html>

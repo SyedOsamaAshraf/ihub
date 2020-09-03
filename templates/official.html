@@ -1,0 +1,271 @@
+
+<html lang="en">
+  <head>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  	
+
+  	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='officialcss.css') }}">
+<script type="text/javascript">
+    var received_data  = {{ data|safe }};
+    console.log(received_data.Dashboard);
+    
+</script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+
+
+
+
+<div class="row" id="navrow">
+ <ul id="nav" > 
+  <a href="{{ url_for('profile') }}" style="text-decoration: none;
+  color: inherit; "><li>Profile</li></a>
+  <a href="{{ url_for('master') }}" style="text-decoration: none;
+  color: inherit; "><li>Master</li></a>
+  <li>Container</li>
+  <a href="{{ url_for('logout') }}" style="text-decoration: none;
+  color: inherit; "><li style="margin-left: 800px">Logout</li></a>
+  
+</ul>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    	<div class="row">
+<div id="ok"></div>
+    		<div class="col-sm-3">
+          <img src="{{ url_for('static',filename='Koala.jpg') }}" id="pic"><br><br><br><br><br><br><br><br><br>
+				<ul class="navbar">
+					<center>
+				<a href="#" style=" 	text-decoration: none;
+ 	color: inherit; ">	<li class="sidemenu" onclick="activelink('dashboard')" id="dashboard">Dashboard</li><hr/>
+				<a href="#" style=" 	text-decoration: none;
+ 	color: inherit; ">	<li class="sidemenu" onclick="activelink('pii')" id="pii">Personal Identity Information</li><hr/></a>
+				<a href="#" style=" 	text-decoration: none;
+ 	color: inherit; ">	<li class="sidemenu" onclick="activelink('address')" id="address">Address</li><hr/></a>
+				<a href="#" style=" 	text-decoration: none;
+ 	color: inherit; ">	<li class="sidemenu" onclick="activelink('passport')" id="passport">Passport Details</li><hr/></a>
+				<a href="#" style=" 	text-decoration: none;
+ 	color: inherit; ">	<li class="sidemenu" onclick="activelink('pan')" id="pan">PAN Details</li><hr/></a>
+				<a href="#" style=" 	text-decoration: none;
+ 	color: inherit; ">	<li class="sidemenu" onclick="activelink('aadhaar')" id="aadhaar">AADHAAR Card</li><hr/></a>
+					</center>
+				</ul>
+				</div>
+				<div class="col-sm-9 name">
+					<span style="float: right;margin-right: 20px;">{{data['Master Data']['Email']}}</span>
+				<h3><b><i>{{data['Personal Identity Information']['Name']}}</i></b></h3>
+
+				<i class="material-icons">place</i><i id="mapplace">{{data['Address']['Address Type'][0]["Present"]["City"]}}</i>
+				<br>
+				<br>
+				<br>
+
+				<div class="row" id="anyoption" style="height: 42px; margin-left: 20px;"></div>
+
+					<div class="row main" style="/*border: solid;*/background-color: white;">
+					<div class="col-sm-6"><ul><h5>
+   					<div id="type">
+							<h1>Dashboard is currently Empty</h1>
+					</div></h5></ul>
+
+					</div>
+					
+					<div class="col-sm-6"><ul><i>
+					<div id="detail">
+							<h1>Dashboard is currently Empty</h1>
+					</div></i></ul>
+					</div>
+				</div>
+				</div>
+				</div>
+
+			
+
+		</div>
+				
+				
+
+	
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+  <script type="text/javascript">
+  	
+document.getElementById('dashboard').addEventListener('click',function(){
+	document.getElementById('anyoption').innerHTML="";
+
+
+    document.getElementById('detail').innerHTML='<h1>currently NDOn nindpo</h1>';
+});
+document.getElementById('pii').addEventListener('click',function(){
+document.getElementById('anyoption').innerHTML="";
+
+
+    document.getElementById('type').innerHTML=`<br>{% for i in data["Personal Identity Information"]%}
+    											<li>{{i}}</li><hr>{% endfor %}`;
+    document.getElementById('detail').innerHTML=`<br>{% for i,j in data["Personal Identity Information"].items()%}
+    											<li>{{j}}</li><hr>{% endfor %}`;
+});
+
+
+
+document.getElementById('address').addEventListener('click',function(){
+	console.log("Called");
+
+		document.getElementById('anyoption').innerHTML=`<select id="addresschange1" name="addresschange1"  onchange="addresschange()"><option disabled selected value> -- select an option -- </option><option value="Present">Present</option><option value="Permanent">Permanent</option><option value="Emergency">Emergency</option></select>`;
+    document.getElementById('type').innerHTML="";
+   document.getElementById('detail').innerHTML="";
+
+});
+
+function addresschange(){
+				var selectBox = document.getElementById("addresschange1");
+      			var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+      			if(selectedValue=="Present"){
+      				console.log(selectedValue);
+      			document.getElementById('type').innerHTML=`<br>{% for i in data['Address']['Address Type'][0]["Present"] %}
+      														<li>{{i}}</li><hr>
+      														{%endfor%}`;
+   				document.getElementById('detail').innerHTML=`<br>{% for i,j in data['Address']['Address Type'][0]["Present"].items()%}
+    											<li>{{j}}</li><hr>{% endfor %}`;
+    										}
+    			else if(selectedValue=="Permanent"){
+    				console.log(selectedValue);
+
+   			document.getElementById('type').innerHTML=`<br>{% for i in data['Address']['Address Type'][1]["Permanent"] %}
+      														<li>{{i}}</li><hr>
+      														{%endfor%}`;
+   				document.getElementById('detail').innerHTML=`<br>{% for i,j in data['Address']['Address Type'][1]["Permanent"].items() %}
+    											<li>{{j}}</li><hr>{% endfor %}`;
+
+    										}
+    			else 	{
+
+    			document.getElementById('type').innerHTML=`<br>{% for i in data['Address']['Address Type'][2]["Emergency"] %}
+      														<li>{{i}}</li><hr>
+      														{%endfor%}`;
+   				document.getElementById('detail').innerHTML=`<br>{% for i,j in data['Address']['Address Type'][2]["Emergency"].items()%}
+    											<li>{{j}}</li><hr>{% endfor %}`;
+    			}
+                
+};
+
+
+document.getElementById('passport').addEventListener('click',function(){
+				document.getElementById('anyoption').innerHTML="";
+
+    			document.getElementById('type').innerHTML=`<br>{% for i in data['Passport'] %}
+      														<li>{{i}}</li><hr>
+      														{%endfor%}`;
+   				document.getElementById('detail').innerHTML=`<br>{% for i,j in data['Passport'].items()%}
+    											<li>{{j}}</li><hr>{% endfor %}`;
+
+});
+
+
+
+
+document.getElementById('pan').addEventListener('click',function(){
+				document.getElementById('anyoption').innerHTML="";
+
+    			document.getElementById('type').innerHTML=`<br>{% for i in data['Pan'] %}
+      														<li>{{i}}</li><hr>
+      														{%endfor%}`;
+   				document.getElementById('detail').innerHTML=`<br>{% for i,j in data['Pan'].items()%}
+    											<li>{{j}}</li><hr>{% endfor %}`;
+
+});
+
+document.getElementById('aadhaar').addEventListener('click',function(){
+				document.getElementById('anyoption').innerHTML="";
+
+    			document.getElementById('type').innerHTML=`<br>{% for i in data['Aadhaar'] %}
+      														<li>{{i}}</li><hr>
+      														{%endfor%}`;
+   				document.getElementById('detail').innerHTML=`<br>{% for i,j in data['Aadhaar'].items()%}
+    											<li>{{j}}</li><hr>{% endfor %}`;
+
+});
+
+
+function activelink(data){
+
+document.getElementById('dashboard').style.backgroundColor="";
+document.getElementById('pii').style.backgroundColor="";
+document.getElementById('address').style.backgroundColor="";
+document.getElementById('passport').style.backgroundColor="";
+document.getElementById('pan').style.backgroundColor="";
+document.getElementById('aadhaar').style.backgroundColor="";
+
+
+document.getElementById(data).style.backgroundColor="yellow";
+
+
+}
+
+
+
+
+
+  </script>
+</html>
